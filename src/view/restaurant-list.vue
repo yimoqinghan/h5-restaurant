@@ -1,92 +1,123 @@
 <template>
-    <div>
-        <van-button style="margin:0 auto;" size="large" type="primary" @click="sendSms">登录</van-button>
-        <p class="title">菜品</p>
-        <van-grid square direction="horizontal" :column-num="2" :gutter="10">
-            <van-grid-item v-for="(item,index) in images" :key="index" class="grid-fix-wrap">
-                <van-image class="img" :src="item.img" />
-                <p class="content">
-                    <span class="name">{{item.name}}</span>
-                    <van-icon class="img-icon" @click="likeFn" name="like-o" size="20" color="red"/>
-                </p>
+    <div id="restaurant-list">
+        <img v-lazy="img" class="vote-main-img"/>
+        <van-grid :column-num="3" :gutter="10" class="res-list-wrap" square >
+            <van-grid-item @click="chooseResFn(item)" v-for="(item,index) in images" :key="index">
+                <van-image v-if="index != 4" :src="item" />
             </van-grid-item>
         </van-grid>
+        <!-- 模态框 -->
+        <van-dialog v-model="show" title="餐厅介绍" :show-cancel-button="false" :showConfirmButton="false" closeOnClickOverlay>
+            <van-swipe :autoplay="3000">
+                <van-swipe-item v-for="(image, index) in images" :key="index">
+                    <img v-lazy="image" />
+                </van-swipe-item>
+            </van-swipe>
+            <p class="name">
+                <span>好利来餐厅</span>
+                <van-icon :name="iconName"  size="0.45rem" :color="iconColor" @click="likeR"/>
+            </p>
+            <p class="content">好利来餐厅的饭最好吃好利来餐厅的饭最好吃好利来餐厅的饭最好吃好利来餐厅的饭最好吃好利来餐厅的饭最好吃好利来餐厅的饭最好吃好利来餐厅的饭最好吃...</p>
+        </van-dialog>
+        <FooterItem :activeName="activeName"/>
     </div>
 </template>
 <script>
+import footerC from '@/components/footerC.vue'
 export default {
     data(){
         return {
-            images: [
-                {
-                    img:require('@/statics/img/1.jpg'),
-                    name:'飞黄腾达'
-                },
-                {
-                    img:require('@/statics/img/2.jpg'),
-                    name:'蟹行天下'
-                }
-                ,
-                {
-                    img:require('@/statics/img/3.jpg'),
-                    name:'东坡酥肉'
-                },
-                {
-                    img:require('@/statics/img/4.jpg'),
-                    name:'小瓜囊肿'
-                }
+            show:false,
+            iconName:'good-job-o',
+            iconColor:'#2c3e50',
+            activeName:'',
+            img:require('@/statics/img/main.jpg'),
+            images:[
+                require('@/statics/img/can1.jpg'),
+                require('@/statics/img/can2.jpeg'),
+                require('@/statics/img/can1.jpg'),
+                require('@/statics/img/can2.jpeg'),
+                '',
+                require('@/statics/img/can2.jpeg'),
+                require('@/statics/img/can1.jpg'),
+                require('@/statics/img/can2.jpeg'),
+                require('@/statics/img/can1.jpg'),
             ]
         }
     },
+    components:{
+        FooterItem:footerC
+    },
     methods:{
-        likeFn(){
-            this.$router.push({
-                path:'/restaurant/login'
-            })
+        chooseResFn(val){
+            if(val){
+                this.show = true
+            }
         },
-        sendSms(){
-            this.$router.push({
-                path:'/restaurant/login'
-            })
+        likeR(){
+            if(this.iconName.indexOf('-o') != -1){
+                this.iconName = 'good-job'
+                this.iconColor='red'
+            }else{
+                this.iconName = 'good-job-o'
+                this.iconColor='#2c3e50'
+            }
         }
     }
 }
 </script>
 <style scoped>
-    .title{
-        text-align: center;
-        font-size: 0.32rem;
-        font-weight: bold;
+    #restaurant-list{
+        background-color: #f5f5f5;
+        padding:0.8rem 0 50px;
     }
-    .img,.img .van-image__img{
-        widows: 100%;
+    #restaurant-list >>> .vote-main-img{
+        width: 100%;
+        height:4rem;
+    }
+    .res-list-wrap{
+        padding-top:10px;
+    }
+    #restaurant-list >>> .van-dialog__header{
+        margin-bottom:0.2rem;
+        padding-top:0.25rem;
+    }
+    #restaurant-list >>> .van-swipe__track{
+        width: 100%;
+        height:2.5rem;
+    }
+    #restaurant-list >>> .van-swipe-item img{
+        width: 100%;
         height:100%;
     }
-    .grid-fix-wrap{
-        border-radius: 0.08rem !important;
+    #restaurant-list >>> .van-dialog__content{
+        padding:0 0.25rem 0.32rem;
     }
-    .grid-fix-wrap .van-grid-item__content{
-        position: relative;
-        left:0;
-        top:0;
-        
+    #restaurant-list >>> .van-grid-item__content{
+        padding:0;
     }
-    .content{
+    .van-image{
         width: 100%;
-        height:0.5rem;
-        position: absolute;
-        right: 0rem;
-        bottom:0rem;
+        height:100%;
+    }
+    .name{
+        margin:0;
+        margin-top:0.15rem;
         display: flex;
         align-items: center;
-        justify-content: center;
-        background: darkgray;
-        box-shadow: 0.1rem 0.05rem 0.1rem #ccc;
+        justify-content: space-between;
     }
-    .content span.name{
-        font-size: 0.28rem;
-        font-weight: 500;
+    .name span{
         display: inline-block;
-        margin-right:0.5rem;
+        font-size: 0.32rem;
+        color:black;
+        text-align: left;
+    }
+    .content{
+        font-size: 0.28rem;
+        text-align: left;
+        line-height: 0.4rem;
+        padding:0.15rem 0;
+        margin:0;
     }
 </style>

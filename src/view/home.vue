@@ -1,9 +1,10 @@
 <template>
     <div id="home">
         <van-image class="main-img"  v-for="(item,index) in images" :key="index" :src="item.img"  fit="contain"/>
-        <div class="page-btn">
-
-        </div>
+        <van-grid :column-num="2">
+            <van-grid-item  text="餐厅介绍"  @click="goHref('/restaurant/list')"/>
+            <van-grid-item  text="点击投票" @click="goHref('/restaurant/vote')"/>
+        </van-grid>
         <FooterItem :activeName="activeName"/>
     </div>
 </template>
@@ -21,8 +22,7 @@ export default {
                 {
                     img:require('@/statics/img/2.jpg'),
                     name:'蟹行天下'
-                }
-                ,
+                },
                 {
                     img:require('@/statics/img/3.jpg'),
                     name:'东坡酥肉'
@@ -38,11 +38,19 @@ export default {
         FooterItem:footerC
     },
     methods:{
-
+        goHref(val){
+            this.$router.push({
+                path:val
+            })
+        }
     }
 }
 </script>
 <style scoped>
+    #home{
+        background-color: #f5f5f5;
+        padding:0.8rem 0 50px;
+    }
     .main-img{
         margin-top:-0.08rem;
     }
@@ -51,11 +59,5 @@ export default {
     }
     .main-img img{
         width: 100%;
-    }
-    .page-btn{
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding:0.2rem 0.32rem;
     }
 </style>

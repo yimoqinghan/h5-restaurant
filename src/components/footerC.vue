@@ -13,16 +13,15 @@
       <span class="name">活动说明</span>
     </p> -->
     <van-tabbar v-model="activeTagName" active-color="#1989fa" inactive-color="#000">
-      <van-tabbar-item name="home" to="/" icon="wap-home-o">首页</van-tabbar-item>
-      <van-tabbar-item name="ranking" to="/restaurant/rankingList" icon="bar-chart-o">排行榜</van-tabbar-item>
-      <van-tabbar-item name="active-description" icon="records">活动说明</van-tabbar-item>
+      <van-tabbar-item name="home" replace to="/" icon="wap-home-o">首页</van-tabbar-item>
+      <van-tabbar-item name="ranking" replace to="/restaurant/rankingList" icon="bar-chart-o">排行榜</van-tabbar-item>
+      <van-tabbar-item name="active-description" replace to="/restaurant/rule" icon="records">活动说明</van-tabbar-item>
     </van-tabbar>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'footer',
   props: {
     activeName:{
       type:String,
@@ -30,10 +29,14 @@ export default {
     }
   },
   watch:{
-    activeName(val){
-      if(val){
-        console.log('val',val)
-        this.activeTagName = val
+    activeName:{
+      immediate:true,
+      handler(val){
+        console.log(val)
+        if(val){
+          console.log('val',val)
+          this.activeTagName = val
+        }
       }
     }
   },
@@ -48,7 +51,7 @@ export default {
 }
 </script>
 <style scoped>
-  .footer{
+  /* .footer{
     position: fixed;
     left:0;
     bottom:0;
@@ -59,8 +62,8 @@ export default {
     align-items: center;
     justify-content: space-between;
     box-shadow: 0.1rem -0.02rem 0.1rem rgba(0,0,0,0.2);
-  }
-  .item{
+  } */
+  /* .item{
     height:100%;
     text-align: center;
     width: 30%;
@@ -76,5 +79,5 @@ export default {
     color: black;
     display:block;
     text-align: center;
-  }
+  } */
 </style>

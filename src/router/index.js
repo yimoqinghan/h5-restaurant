@@ -51,6 +51,21 @@ export default new Router({
       meta: {
         title: '排行榜',
       }
+    },{
+      path: '/restaurant/vote',
+      name: 'vote',
+      component: () => import('@/view/vote.vue'),
+      meta: {
+        title: '投票',
+      }
+    },
+    {
+      path: '/restaurant/rule',
+      name: 'rule',
+      component: () => import('@/view/rule.vue'),
+      meta: {
+        title: '活动说明',
+      }
     },
     {
       path: '/restaurant/login',

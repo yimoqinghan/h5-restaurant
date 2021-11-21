@@ -91,8 +91,8 @@ export default {
 <style scoped>
     #login{
         width: 100%;
-        height: 100%;
-        /* background-color: rgb(30, 128, 255); */
+        height: 100vh;
+        background-color: #1989fa;
     }
     .login-box{
         width: 7rem;
@@ -111,12 +111,12 @@ export default {
         text-align: center;
     }
     .van-button--primary{
-        background-color: #e33d3d;
-        border:0.02rem solid #e33d3d;
+        background-color: #1989fa;
+        border:0.02rem solid #1989fa;
         border-radius:0.05rem;
     }
     .van-button--info{
-        background-color: #e33d3d;
-        border:0.02rem solid #e33d3d;
+        background-color: #1989fa;
+        border:0.02rem solid #1989fa;
     }
 </style>
