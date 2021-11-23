@@ -50,7 +50,7 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style >
   /* .footer{
     position: fixed;
     left:0;

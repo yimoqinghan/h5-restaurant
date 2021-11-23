@@ -3,14 +3,14 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 export default new Router({
-  mode:'history',
+  /* mode:'history',
   scrollBehavior(to,from,savePosition){
     if (savePosition) {
       return savePosition
     } else{
       return {x:0,y:0}
     }
-  },
+  }, */
   routes: [
     {
         path: '/',
