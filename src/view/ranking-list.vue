@@ -19,12 +19,12 @@
         <p  class="list tt">
           <span class="rank tt">排名</span>
           <span class="name tt td">{{activeType == 'type1'?'面点名':'菜名'}}</span>
-          <span class="num tt">票数</span>
+          <!-- <span class="num tt">票数</span> -->
         </p>
         <p v-for="(item,index) in rankingList[activeType]" :key="index" class="list bd">
           <span class="rank">{{item.rank}}</span>
           <span class="name">{{item.name}}</span>
-          <span class="num">{{item.num}}票</span>
+          <!-- <span class="num">{{item.num}}票</span> -->
         </p>
       </van-list>
     </div>
@@ -183,13 +183,13 @@ export default {
     line-height: 0.4rem;
   }
   .rank{
-    width: 20%;
+    width: 30%;
     color:black;
     font-weight: bold;
   }
   .name{
     color: #cccc;
-    width: 60%;
+    width: 70%;
   }
   .num{
     color: #1989fa;

@@ -3,7 +3,7 @@
         <img v-lazy="img" class="vote-main-img"/>
         <van-grid :column-num="3" :gutter="10" class="res-list-wrap" square >
             <van-grid-item @click="chooseResFn(item)" v-for="(item,index) in images" :key="index">
-                <van-image v-if="index != 4" :src="item" />
+                <van-image :src="item" />
             </van-grid-item>
         </van-grid>
         <!-- 模态框 -->
@@ -59,7 +59,7 @@ export default {
                 require('@/statics/img/can2.jpeg'),
                 require('@/statics/img/can1.jpg'),
                 require('@/statics/img/can2.jpeg'),
-                '',
+                require('@/statics/img/can1.jpg'),
                 require('@/statics/img/can2.jpeg'),
                 require('@/statics/img/can1.jpg'),
                 require('@/statics/img/can2.jpeg'),

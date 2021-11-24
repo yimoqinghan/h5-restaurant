@@ -1,18 +1,19 @@
 <template>
     <div id="home">
         <van-image class="main-img"  v-for="(item,index) in images" :key="index" :src="item.img"  fit="contain"/>
-        <!-- <van-grid :column-num="2">
+        <van-grid :column-num="3">
             <van-grid-item  text="餐厅介绍"  @click="goHref('/restaurant/list')"/>
             <van-grid-item  text="点击投票" @click="goHref('/restaurant/vote')"/>
-        </van-grid> -->
-        <div class="nav-item" @click="goHref('/restaurant/list')">
+            <van-grid-item  text="" />
+        </van-grid>
+        <!-- <div class="nav-item" @click="goHref('/restaurant/list')">
             <span class="nav-name">餐厅介绍</span>
             <span class="icon"></span>
         </div>
         <div class="nav-item nav-p" @click="goHref('/restaurant/vote')">
             <span class="nav-name">点击投票</span>
             <span class="icon"></span>
-        </div>
+        </div> -->
         <FooterItem :activeName="activeName"/>
     </div>
 </template>
@@ -50,9 +51,10 @@ export default {
     #home{
         background-color: #f5f5f5;
         padding:0.8rem 0 50px;
+        font-size: 0;
     }
     .main-img{
-        margin-top:-0.08rem;
+        /* margin-top:-0.1rem; */
     }
     .main-img:first-child{
         margin-top:0;
