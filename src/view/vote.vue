@@ -183,7 +183,7 @@ import footerC from '@/components/footerC.vue'
 export default {
   data(){
     return {
-      img:require('@/statics/img/main.jpg'),
+      img:require('@/statics/img/res.jpg'),
       searchValue:'',
       activeName:'',
       activeType:'type1',
