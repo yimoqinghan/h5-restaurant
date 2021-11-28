@@ -6,8 +6,8 @@
     </van-divider>
     <div class="ranking-wrap">
       <van-tabs v-model="activeType">
-        <van-tab title="面点" name="type1"></van-tab>
-        <van-tab title="菜肴" name="type2"></van-tab>
+        <van-tab title="面点" name="pastryRankList"></van-tab>
+        <van-tab title="菜肴" name="dishRankList"></van-tab>
       </van-tabs>
       <van-list
         v-model="loading"
@@ -18,12 +18,12 @@
       >
         <p  class="list tt">
           <span class="rank tt">排名</span>
-          <span class="name tt td">{{activeType == 'type1'?'面点名':'菜名'}}</span>
+          <span class="name tt td">{{activeType == 'pastryRankList'?'面点名':'菜名'}}</span>
           <!-- <span class="num tt">票数</span> -->
         </p>
-        <p v-for="(item,index) in rankingList[activeType]" :key="index" class="list bd">
+        <p v-for="(item,index) in rankList[activeType]" :key="index" class="list bd">
           <span class="rank">{{item.rank}}</span>
-          <span class="name">{{item.name}}</span>
+          <span class="name">{{item.foodName}}</span>
           <!-- <span class="num">{{item.num}}票</span> -->
         </p>
       </van-list>
@@ -33,6 +33,7 @@
 </template>
 <script>
 import footerC from '@/components/footerC.vue'
+import {foodRank} from '@/utils/api'
 export default {
   data(){
     return{
@@ -40,93 +41,8 @@ export default {
        activeName:'ranking',
        loading: false,
        finished: false,
-       activeType:'type1',
-       rankingList:{
-         type1:[
-           {
-              rank:1,
-              name:'臊子面',
-              num:1111,
-            },
-            {
-              rank:2,
-              name:'裤带面',
-              num:899,
-            },
-            {
-              rank:3,
-              name:'肉夹馍',
-              num:764,
-            },
-            {
-              rank:4,
-              name:'炒饼',
-              num:349,
-            },
-            {
-              rank:5,
-              name:'卤面',
-              num:290,
-            },
-            {
-              rank:6,
-              name:'牛肉面',
-              num:180,
-            },
-            {
-              rank:7,
-              name:'biangbiang面',
-              num:100,
-            },
-            {
-              rank:8,
-              name:'刀削面',
-              num:5,
-            },
-         ],
-         type2:[
-           {
-              rank:1,
-              name:'狮子头',
-              num:2193,
-            },
-            {
-              rank:2,
-              name:'佛跳墙',
-              num:1899,
-            },
-            {
-              rank:3,
-              name:'红烧肉',
-              num:1764,
-            },
-            {
-              rank:4,
-              name:'炖猪蹄',
-              num:449,
-            },
-            {
-              rank:5,
-              name:'黄焖鸡米饭',
-              num:190,
-            },
-            {
-              rank:6,
-              name:'铁锅乱炖',
-              num:80,
-            },
-            {
-              rank:7,
-              name:'地锅鸡',
-              num:50,
-            },
-            {
-              rank:8,
-              name:'宫保鸡丁',
-              num:23,
-            },
-         ]
-       }
+       activeType:'pastryRankList',
+       rankList:{},
     }
   },
   components:{
@@ -134,8 +50,17 @@ export default {
   },
   mounted(){
     this.onLoad();
+    this.foodRank()
   },
   methods:{
+    foodRank(){
+      foodRank()
+      .then(res => {
+        if(res.error == null){
+          this.rankList = res;
+        }
+      })
+    },
     onLoad() {
       setTimeout(() => {
         // 加载状态结束

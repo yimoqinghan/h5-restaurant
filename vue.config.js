@@ -8,7 +8,7 @@ module.exports = {
   indexPath: 'index.html', //指定生成的 index.html 的输出路径 (相对于 outputDir)。也可以是一个绝对路径
   productionSourceMap: false, //将压缩后的代码和压缩前的代码做映射，方便调试
   filenameHashing: true, //文件名哈希值
-  /* configureWebpack: config => {
+  configureWebpack: config => {
     if (isProd) {
       config.plugins.push(
         new CompressionWebpackPlugin({
@@ -19,7 +19,7 @@ module.exports = {
         })
       )
     }
-  }, */
+  },
   /* devServer: {// 环境配置
       host: '0.0.0.0',
       port: 8084,

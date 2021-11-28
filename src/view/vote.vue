@@ -9,166 +9,26 @@
         clearable
       />
       <van-tabs v-model="activeType">
-        <van-tab title="精致面点" name="type1">
+        <van-tab title="精致面点" name="pastryList">
           <div class="item-list">
-            <div class="item">
-              <img v-lazy="img1" class="vote-img"/>
-              <p class="title">油爆狮子头</p>
-              <!-- <p class="num">111票</p> -->
+            <div class="item" v-for="(foodItme,index) in foodList.pastryList" :key="index">
+              <img :src="foodItme.img" class="vote-img"/>
+              <p class="title">{{foodItme.name}}</p>
               <div class="btn">
                 <van-icon name="good-job"  size="0.35rem"/>
-                <span @click="voteFn">投票</span>
-              </div>
-            </div>
-            <div class="item">
-              <img v-lazy="img2" class="vote-img"/>
-              <p class="title">大螃蟹</p>
-              <!-- <p class="num">132票</p> -->
-              <div class="btn">
-                <van-icon name="good-job" size="0.35rem"/>
-                <span @click="voteFn">投票</span>
-              </div>
-            </div>
-          </div>
-          <div class="item-list">
-            <div class="item">
-              <img v-lazy="img1" class="vote-img"/>
-              <p class="title">油爆狮子头</p>
-              <!-- <p class="num">111票</p> -->
-              <div class="btn">
-                <van-icon name="good-job"  size="0.35rem"/>
-                <span @click="voteFn">投票</span>
-              </div>
-            </div>
-            <div class="item">
-              <img v-lazy="img2" class="vote-img"/>
-              <p class="title">大螃蟹</p>
-              <!-- <p class="num">132票</p> -->
-              <div class="btn">
-                <van-icon name="good-job" size="0.35rem"/>
-                <span @click="voteFn">投票</span>
-              </div>
-            </div>
-          </div>
-          <div class="item-list">
-            <div class="item">
-              <img v-lazy="img1" class="vote-img"/>
-              <p class="title">油爆狮子头</p>
-              <!-- <p class="num">111票</p> -->
-              <div class="btn">
-                <van-icon name="good-job"  size="0.35rem"/>
-                <span @click="voteFn">投票</span>
-              </div>
-            </div>
-            <div class="item">
-              <img v-lazy="img2" class="vote-img"/>
-              <p class="title">大螃蟹</p>
-              <!-- <p class="num">132票</p> -->
-              <div class="btn">
-                <van-icon name="good-job" size="0.35rem"/>
-                <span @click="voteFn">投票</span>
-              </div>
-            </div>
-          </div>
-          <div class="item-list">
-            <div class="item">
-              <img v-lazy="img1" class="vote-img"/>
-              <p class="title">油爆狮子头</p>
-              <!-- <p class="num">111票</p> -->
-              <div class="btn">
-                <van-icon name="good-job"  size="0.35rem"/>
-                <span @click="voteFn">投票</span>
-              </div>
-            </div>
-            <div class="item">
-              <img v-lazy="img2" class="vote-img"/>
-              <p class="title">大螃蟹</p>
-              <!-- <p class="num">132票</p> -->
-              <div class="btn">
-                <van-icon name="good-job" size="0.35rem"/>
-                <span @click="voteFn">投票</span>
+                <span @click="foodVote(foodItme.id)">投票</span>
               </div>
             </div>
           </div>
         </van-tab>
-        <van-tab title="饕餮佳肴" name="type2">
+        <van-tab title="饕餮佳肴" name="dishList">
           <div class="item-list">
-            <div class="item">
-              <img v-lazy="img3" class="vote-img"/>
-              <p class="title">地锅鸡</p>
-              <!-- <p class="num">121票</p> -->
+            <div class="item" v-for="(foodItme,index) in foodList.dishList" :key="index" >
+              <img :src="foodItme.img" class="vote-img"/>
+              <p class="title">{{foodItme.name}}</p>
               <div class="btn">
                 <van-icon name="good-job"  size="0.35rem"/>
-                <span @click="voteFn">投票</span>
-              </div>
-            </div>
-            <div class="item">
-              <img v-lazy="img4" class="vote-img"/>
-              <p class="title">佛跳墙</p>
-              <!-- <p class="num">3412票</p> -->
-              <div class="btn">
-                <van-icon name="good-job" size="0.35rem"/>
-                <span @click="voteFn">投票</span>
-              </div>
-            </div>
-          </div>
-          <div class="item-list">
-            <div class="item">
-              <img v-lazy="img3" class="vote-img"/>
-              <p class="title">地锅鸡</p>
-              <!-- <p class="num">121票</p> -->
-              <div class="btn">
-                <van-icon name="good-job"  size="0.35rem"/>
-                <span @click="voteFn">投票</span>
-              </div>
-            </div>
-            <div class="item">
-              <img v-lazy="img4" class="vote-img"/>
-              <p class="title">佛跳墙</p>
-              <!-- <p class="num">3412票</p> -->
-              <div class="btn">
-                <van-icon name="good-job" size="0.35rem"/>
-                <span @click="voteFn">投票</span>
-              </div>
-            </div>
-          </div>
-          <div class="item-list">
-            <div class="item">
-              <img v-lazy="img3" class="vote-img"/>
-              <p class="title">地锅鸡</p>
-              <!-- <p class="num">121票</p> -->
-              <div class="btn">
-                <van-icon name="good-job"  size="0.35rem"/>
-                <span @click="voteFn">投票</span>
-              </div>
-            </div>
-            <div class="item">
-              <img v-lazy="img4" class="vote-img"/>
-              <p class="title">佛跳墙</p>
-              <!-- <p class="num">3412票</p> -->
-              <div class="btn">
-                <van-icon name="good-job" size="0.35rem"/>
-                <span @click="voteFn">投票</span>
-              </div>
-            </div>
-          </div>
-          <div class="item-list">
-            <div class="item">
-              <img v-lazy="img3" class="vote-img"/>
-              <p class="title">地锅鸡</p>
-              <!-- <p class="num">121票</p> -->
-              <div class="btn">
-                <van-icon name="good-job"  size="0.35rem"/>
-                <span @click="voteFn">投票</span>
-              </div>
-            </div>
-            <div class="item">
-              <img v-lazy="img4" class="vote-img"/>
-              <p class="title">佛跳墙</p>
-              <!-- <p class="num">3412票</p> -->
-              <div class="btn">
-                <van-icon name="good-job" size="0.35rem"/>
-                <span @click="voteFn">投票</span>
+                <span @click="foodVote(foodItme.id)">投票</span>
               </div>
             </div>
           </div>
@@ -180,6 +40,7 @@
 </template>
 <script>
 import footerC from '@/components/footerC.vue'
+import {foodVote,foodList} from '@/utils/api'
 export default {
   data(){
     return {
@@ -191,15 +52,32 @@ export default {
       img2:require('@/statics/img/2.jpg'),
       img3:require('@/statics/img/3.jpg'),
       img4:require('@/statics/img/4.jpg'),
+      foodList:{},
     }
   },
   components:{
     FooterItem:footerC
   },
+  mounted(){
+    this.foodListFn();
+  },
   methods:{
-    voteFn(){
-      this.$router.push({
-        path:'/restaurant/login'
+    foodListFn(){
+      foodList()
+      .then(res => {
+        if(res.error == null){
+          this.foodList = res
+        }
+      })
+    },
+    foodVote(foodId){
+      foodVote(foodId)
+      .then(res => {
+        if(res.error == null){
+          this.$toast('投票成功！')
+        }else{
+          this.$toast(res.error.msg)
+        }
       })
     }
   }
@@ -239,9 +117,11 @@ export default {
     justify-content: space-between;
     padding:0.15rem;
     margin-bottom:0.2rem;
+    flex-wrap:wrap;
   }
   .item{
     width: 49%;
+    margin-bottom:0.25rem;
   }
   .item img.vote-img{
     width: 100%;
