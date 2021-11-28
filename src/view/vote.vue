@@ -47,11 +47,7 @@ export default {
       img:require('@/statics/img/res.jpg'),
       searchValue:'',
       activeName:'',
-      activeType:'type1',
-      img1:require('@/statics/img/1.jpg'),
-      img2:require('@/statics/img/2.jpg'),
-      img3:require('@/statics/img/3.jpg'),
-      img4:require('@/statics/img/4.jpg'),
+      activeType:'pastryList',
       foodList:{},
     }
   },
