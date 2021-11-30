@@ -11,7 +11,7 @@
         <div class="map-wrap">
             <div class="map-name-wrap">
                 <van-icon name="location" />
-                <p style="margin-left:0.18rem;">浦东机场觅食图</p>
+                <p style="margin-left:0.18rem;">浦东机场美食地图</p>
             </div>
             <img v-lazy="img" class="vote-main-img"/>
             <img v-for="(imgItem,index) in images" :key="index" v-lazy="imgItem.src" class="mapImg" :class="'mapImg'+index" @click="chooseResFn(imgItem)"/>
@@ -67,7 +67,7 @@ export default {
             iconName:'good-job-o',
             iconColor:'#2c3e50',
             activeName:'',
-            img:require('@/statics/img/map/map11.jpg'),
+            img:require('@/statics/img/map/mgp.png'),
             activeFoodObject:{},
             activeImg:'',
             images:[
@@ -161,14 +161,16 @@ export default {
             })
         },
         hallListFn(){
-            hallList()
-            .then(res => {
-                if(res.error == null){
-                    this.hallListArray = res.likeList
-                }else{
-                    this.hallListArray
-                }
-            })
+            if(window.localStorage.getItem('loginToken')){
+                hallList()
+                .then(res => {
+                    if(res.error == null){
+                        this.hallListArray = res.likeList
+                    }else{
+                        this.hallListArray
+                    }
+                })
+            }
         },
         hallAddFn(hallId){
             hallAdd({
@@ -221,7 +223,6 @@ export default {
     }
     #restaurant-list >>> .vote-main-img{
         width: 100%;
-        height:4rem;
     }
     .res-list-wrap{
         padding-top:10px;
@@ -302,49 +303,49 @@ export default {
         z-index:1;
     }
     .mapImg0{
-        width: 0.8rem;
-        left:3.3rem;
-        bottom:1rem;
+        width: 1.4rem;
+        left:3.5rem;
+        bottom:3.55rem;
     }
     .mapImg1{
-        width: 0.8rem;
-        left:2.6rem;
-        bottom:0.2rem;
+        width: 1.4rem;
+        left:1.3rem;
+        bottom:0.6rem;
     }
     .mapImg2{
-        width: 0.8rem;
-        left:1.6rem;
-        bottom:1.5rem;
+        width: 1.4rem;
+        left:2rem;
+        top:4.9rem;
     }
     .mapImg3{
-        width: 0.8rem;
-        right:2.4rem;
-        bottom:0.2rem;
+        width: 1.4rem;
+        right:2.6rem;
+        bottom:0.65rem;
     }
     .mapImg4{
-        width: 0.8rem;
-        left:1.8rem;
-        top:1.25rem;
+        width: 1.4rem;
+        left:1.85rem;
+        top:2.55rem;
     }
     .mapImg5{
-        width: 0.8rem;
-        left:0.2rem;
-        top:1.25rem;
+        width: 1.4rem;
+        left:0.1rem;
+        top:1.23rem;
     }
     .mapImg6{
-        width: 0.8rem;
-        right:0.4rem;
-        bottom:0.5rem;
+        width: 1.4rem;
+        right:0.3rem;
+        bottom:2.5rem;
     }
     .mapImg7{
-        width: 0.8rem;
-        right:0.8rem;
-        top:3.25em;
+        width: 1.4rem;
+        right:0.9rem;
+        top:4.25em;
     }
     .mapImg8{
-        width: 1rem;
+        width: 1.4rem;
         left:0.3rem;
-        bottom:1.7rem;
+        bottom:4.7rem;
     }
     .contentImg{
         width: 100%;

@@ -10,6 +10,18 @@
                     <span>点击投票</span>
                 </van-grid-item>
             </van-grid> -->
+            <div class="main-content">
+                    <p class="t1 tt">美食互动“三重奏”</p>
+                    <p class="t1">一重奏:佳肴名点实惠享</p>
+                    <p>您可以在活动期间，以优惠价品尝到各家
+                    食堂每日推出的特色套餐及点心。(每人限购一份）。
+                    </p>
+                    <p class="t1">二重奏:精品靓厨您做主</p>
+                    <p>您可通过扫描活动二维码，为您心
+                    仪的食堂、套餐或点心投票、点赞。</p>
+                    <p class="t1">三重奏:幸运食客就是您</p>
+                    <p>在美食周活动结束后，参与投票的您将有机会被抽取获得“幸运食客”称号。</p>
+            </div>
             <div class="grid-btn-wrap">
                 <span @click="goHref('/restaurant/list')">美食地图</span>
                 <span @click="goHref('/restaurant/vote')">点击投票</span>
@@ -116,7 +128,8 @@ export default {
     .grid-btn-wrap span{
         display: inline-block;
         font-size: 0.32rem;
-        color:#f3453a;
+        /* color:#f3453a; */
+        color: #fff;
         padding:0.15rem 0.35rem;
         border:0.08rem solid #1f0d23;
         border-radius: 0.25rem;
@@ -126,5 +139,26 @@ export default {
     }
     .grid-btn-wrap span:first-child{
         margin-right:0.8rem;
+    }
+    .main-content{
+        padding:0.15rem 0.25rem;
+        background: #fff;
+    }
+    .main-content p{
+        font-size: 0.28rem;
+        color:black;
+        text-align: left;
+        line-height:0.4rem;
+        margin:0;
+    }
+    .main-content p.t1{
+        font-size:0.32rem;
+        font-weight: bold;
+        color: #b61c1c;
+        margin-top:0.2rem;
+    }
+    .main-content p.tt{
+        font-size:0.42rem;
+        text-align: center;   
     }
 </style>

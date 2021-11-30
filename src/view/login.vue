@@ -102,9 +102,13 @@ export default {
                 if(res.error == null){
                     this.$toast('登录成功')
                     window.localStorage.setItem('loginToken',res.token);
+                    let url = '/restaurant/index'
+                    if(this.$route.query.redirect){
+                        url = this.$route.query.redirect
+                    }
                     setTimeout(() => {
                         this.$router.push({
-                            path:'/restaurant/index'
+                            path:url
                         })
                     },1000)
                 }else{
@@ -168,9 +172,13 @@ export default {
         height: 100vh;
         background-color: #1989fa;
     }
+    #login >>> .van-field__label{
+        width: 1.8rem;
+        margin-right:0.05rem;
+    }
     .login-box{
         width: 7rem;
-        height:6rem;
+        height:6.5rem;
         border-radius: 0.15rem;
         background-color:#fff;
         box-shadow: 0.05rem 0.02rem 0.05rem #fff;
@@ -194,6 +202,6 @@ export default {
         border:0.02rem solid #1989fa;
     }
     .captchaImage{
-        width: 1.3rem;
+        width: 1.8rem;
     }
 </style>

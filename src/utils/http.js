@@ -21,11 +21,19 @@ axios.interceptors.request.use(function (config) {
 
 // 添加响应拦截器
 axios.interceptors.response.use((response) => {
-  console.log(response);
-  if (response.status === 200) {            
-      return Promise.resolve(response);        
+  console.log(response,'res');
+  if (response.status === 200) {
+      if(response.data.error != null && (response.data.error.code == '1' || response.data.error.code == '2' || response.data.error.code == '3')){
+        router.replace({                        
+            path: '/restaurant/login',                        
+            query: { 
+                redirect: router.currentRoute.fullPath 
+            }
+        });
+      }
+      return Promise.resolve(response);      
   } else {            
-      return Promise.reject(response);        
+      return Promise.resolve(response);        
   } 
 //   return response;
 }, (error) => {
